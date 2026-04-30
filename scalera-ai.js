@@ -89,7 +89,7 @@ async function sendToAI(userText) {
     aiInput.disabled = true;
     
     try {
-        const response = await fetch('http://localhost:8000/api/chat', {
+        const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ messages: messages })
@@ -225,7 +225,7 @@ function startGeneration(chatHistoryStr) {
 // ─────────────────────────────────────────────────
 async function generateFromBackend(chatHistoryStr) {
     try {
-        const response = await fetch('http://localhost:8000/api/generate', {
+        const response = await fetch('/api/generate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
