@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from engine.generator import generate_website
+from .engine.generator import generate_website
 
 app = FastAPI()
 
@@ -22,7 +22,7 @@ class GenerateRequest(BaseModel):
 
 @app.post("/api/chat")
 async def chat(request: ChatRequest):
-    from engine.generator import chat_with_ai
+    from .engine.generator import chat_with_ai
     response = await chat_with_ai(request.messages)
     return {"status": "success", "reply": response}
 
